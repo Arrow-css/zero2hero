@@ -3,12 +3,13 @@ import requests
 
 class BtcPrice:
     prices = {}
+    url = "https://api.coindesk.com/v1/bpi/currentprice.json"
 
     # Мы создаем объект и поле prices 
     # Принимает словарь цен btc
-    def __init__(self, api_data):
-        self.prices = api_data
-    
+    def __init__(self):
+        self.prices = self.get_data()
+
     # Получаем rate в значении float по переданному в метод валюты
     # Принимает Валюту
     def get_rate_by_currancy(self, currancy):
@@ -43,6 +44,12 @@ class BtcPrice:
         # Биткоин стоит 30000 USD
         # Сколько мы купим Биткоинов
         # 60 000 / 30 000 = 2 
+    
+    def get_data(self):
+        response = requests.get(self.url)
+        api_data = response.json()
+
+        return api_data
 
 # Получение данных из внешниго источика 
 # Превращаем данные в структуру данных python
@@ -57,7 +64,8 @@ btc_count = 8
 money = 40000
 quotation = [30000, 35000, 19900, 32000]
 
-btc_price_obj = BtcPrice(api_data)
+# btc_price_obj = BtcPrice(api_data)
+btc_price_obj = BtcPrice()
 rate = btc_price_obj.get_rate_by_currancy("USD")
 # result = btc_price_obj.btc_calculate(150, "USD")
 result = btc_price_obj.btc_from_money("USD", money)
