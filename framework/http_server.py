@@ -1,7 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 from http.server import HTTPServer
 import json
-
 import view
 
 # path = "/ru/post/672434/"
@@ -41,17 +40,12 @@ class HttpGetHandler(BaseHTTPRequestHandler):
         self.end_headers()
 
         lang_data, action, param = dispath(self.path)
-        
-        # print(view.action_dict)
-
         result:str = str()
-        
-
         #
         #  {
         #  'post': {'action': <function post at 0x7ffbfba6ddc0>},
-        #  'all_post': {'action': <function get_all_post at 0x7ffbfba6dee0>},
-        #  'print_my_name': {'action': <function prin_my_name at 0x7ffbfb9d7040>}
+        #  'all_post': {'action': <>},
+        #  'print_my_name': {'action': <function prin_my_namfunction get_all_post at 0x7ffbfba6dee0e at 0x7ffbfb9d7040>}
         # }
         # action = "print_my_name"
         if view.action_dict.get(action):

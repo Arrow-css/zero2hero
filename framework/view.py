@@ -63,3 +63,10 @@ def how_many_btc_i_can_buy(currancy, money):
 
 # Возвращает стоимость N btc в переданной валюте 
 # localhost:8000/ru/multiply_btc_to_money/USD,9
+
+
+# localhost:8000/ru/register/sasha,paswrd
+
+@rout("register")
+def registracion(login, password):
+    return 
